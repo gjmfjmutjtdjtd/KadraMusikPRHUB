@@ -6,6 +6,7 @@ import Modal from './components/Modal.tsx';
 import { Contact, QuickLink, Track, AppTab, ReleasePlan, Metric, ContactCategory } from './types.ts';
 import { INITIAL_CONTACTS, INITIAL_LINKS, INITIAL_LABEL_ARTISTS, INITIAL_TRACKS, INITIAL_PLATFORM_CONTACTS, INITIAL_RELEASE_PLANS, INITIAL_METRICS } from './constants.tsx';
 import { generatePitch, processSmartImport } from './services/geminiService.ts';
+import app, { db, auth, storage } from './services/firebaseConfig';
 
 // Atomic Data Structure for easier persistence
 interface AppData {
