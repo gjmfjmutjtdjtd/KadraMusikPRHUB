@@ -1,8 +1,11 @@
+// services/firebaseConfig.ts
 import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 import { getStorage } from 'firebase/storage';
+import { getAnalytics } from 'firebase/analytics'; // Добавляем импорт для Google Analytics
 
+// Ваша конфигурация Firebase, использующая переменные окружения VITE_
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -11,15 +14,16 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID, // Добавляем measurementId
 };
 
-// Initialize Firebase
+// Инициализация Firebase приложения
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase services
+// Инициализация Firebase сервисов
 export const db = getDatabase(app);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
+export const analytics = getAnalytics(app); // Экспортируем сервис Analytics
 
-export default app;
+export default app; // Экспортируем сам объект приложения, если он понадобится
