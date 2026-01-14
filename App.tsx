@@ -68,7 +68,8 @@ const App: React.FC = () => {
   const [aiResult, setAiResult] = useState('');
   const [pitchContext, setPitchContext] = useState('');
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
-  const [importText, setImportText] = useState('');
+  553
+    , setImportText] = useState('');
   const [isImporting, setIsImporting] = useState(false);
   const [aiMode, setAiMode] = useState<'pitch' | 'import'>('pitch');
 
@@ -553,7 +554,8 @@ const App: React.FC = () => {
                 <button onClick={async () => {
                   if(!importText.trim()) return;
                   setIsImporting(true);
-                  const data = await processSmartImport(importText);
+                  const data = await processSmartImport
+                    (importText);
                   setAppData(prev => {
                     const newContacts = [...data.contacts.map(c => ({ id: `ai-${Date.now()}-${Math.random()}`, name: c.name || 'AI Import', category: c.category || 'Blogger', platform: c.platform || 'IG', handle: c.handle || '@', reach: 'н/д', contactUrl: c.contactUrl || '', notes: 'Импорт ИИ', tags: c.tags || [] })), ...prev.contacts];
                     const newTracks = [...data.tracks.map(t => ({ id: `ai-t-${Date.now()}-${Math.random()}`, title: t.title || 'Unknown', artistName: t.artistName || 'Unknown', status: 'In Progress' as const, releaseDate: t.releaseDate || '2025-01-01', genre: t.genre || 'Pop' })), ...prev.tracks];
